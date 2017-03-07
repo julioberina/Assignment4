@@ -9,11 +9,14 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Main {
+import java.util.List;
+import java.util.ArrayList;
+
+public abstract class Animal {
     
-    public static void main(String[] args) 
-    {
-        UserInterface ui = new UserInterface();
-        ui.startSystem();
-    }
+    private Owner owner;
+    private String name;
+    private int age;
+    List<Disease> diseases;
+    List<Vaccine> vaccinations;
 }

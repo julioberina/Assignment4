@@ -9,11 +9,15 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Main {
+public class UserInterface {
     
-    public static void main(String[] args) 
+    public UserInterface()
     {
-        UserInterface ui = new UserInterface();
-        ui.startSystem();
+        
+    }
+    
+    public void startSystem()
+    {
+        
     }
 }

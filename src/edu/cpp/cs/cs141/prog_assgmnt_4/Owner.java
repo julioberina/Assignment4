@@ -9,11 +9,6 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Main {
+public class Owner {
     
-    public static void main(String[] args) 
-    {
-        UserInterface ui = new UserInterface();
-        ui.startSystem();
-    }
 }
