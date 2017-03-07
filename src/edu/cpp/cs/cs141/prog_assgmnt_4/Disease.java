@@ -11,4 +11,18 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  */
 public class Disease {
     
+    private String name;
+    private String status;
+    
+    public Disease(String name, String status)
+    {
+        this.name = name;
+        this.status = status;
+    }
+    
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+    
 }

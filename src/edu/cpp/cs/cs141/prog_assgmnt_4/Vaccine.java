@@ -18,16 +18,6 @@ public class Vaccine {
         tradeName = name;
     }
     
-    public Vaccine()
-    {
-        tradeName = "";
-    }
-    
-    public void setTradeName(String name)
-    {
-        tradeName = name;
-    }
-    
     public String getTradeName()
     {
         return tradeName;
