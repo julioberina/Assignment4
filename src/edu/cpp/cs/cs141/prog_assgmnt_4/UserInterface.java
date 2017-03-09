@@ -33,7 +33,7 @@ public class UserInterface {
             System.out.println("1. List and resolve appointments");
             System.out.println("2. Search Appointments by Owner and/or Date");
             System.out.println("3. Search medical records by Animal type, name, and owner");
-            System.out.println("4. Check/add appointments for particular animal");
+            System.out.println("4. Check/add appointments for particular Animal");
             System.out.println("5. Quit Program\n");
             System.out.print("Enter number of task to execute:  ");
             userChoice = scan.nextInt();
@@ -45,6 +45,16 @@ public class UserInterface {
     {
         switch (choice)
         {
+            case 1:
+                appointmentTask();
+                break;
+            case 2:
+                searchAppointments();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
             case 5:
                 running = false;
                 break;
@@ -52,5 +62,15 @@ public class UserInterface {
                 System.out.println("Invalid input!\n");
                 break;
         }
+    }
+    
+    public void appointmentTask()
+    {
+        
+    }
+    
+    public void searchAppointments()
+    {
+        
     }
 }

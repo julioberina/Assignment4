@@ -18,5 +18,21 @@ public class Appointment {
     private LocalDate date;
     private LocalTime time;
     private Owner client;
+    private String status;
     
+    public Appointment(Owner client)
+    {
+        this.client = client;
+        status = "outstanding";
+    }
+    
+    public void resolveStatus()
+    {
+        status = "resolved";
+    }
+    
+    public String retrieveStatus()
+    {
+        return status;
+    }
 }
