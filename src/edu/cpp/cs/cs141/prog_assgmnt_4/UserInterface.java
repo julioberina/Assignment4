@@ -37,6 +37,7 @@ public class UserInterface {
             System.out.println("5. Quit Program\n");
             System.out.print("Enter number of task to execute:  ");
             userChoice = scan.nextInt();
+            System.out.print("\n");
             executeTask(userChoice);
         }
     }
@@ -52,8 +53,10 @@ public class UserInterface {
                 searchAppointments();
                 break;
             case 3:
+                searchAnimalRecords();
                 break;
             case 4:
+                animalApptCheckAndAdd();
                 break;
             case 5:
                 running = false;
@@ -66,10 +69,21 @@ public class UserInterface {
     
     public void appointmentTask()
     {
+        System.out.println("Listing all appointments\n");
         
     }
     
     public void searchAppointments()
+    {
+        
+    }
+    
+    public void searchAnimalRecords()
+    {
+        
+    }
+    
+    public void animalApptCheckAndAdd()
     {
         
     }
