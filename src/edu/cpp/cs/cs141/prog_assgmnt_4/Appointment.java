@@ -9,6 +9,14 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+
 public class Appointment {
+    
+    private LocalDate date;
+    private LocalTime time;
+    private Owner client;
     
 }
