@@ -17,7 +17,7 @@ public abstract class Animal {
     private Owner owner;
     private String name;
     private int age;
-    List<Disease> diseases;
-    List<Vaccine> vaccinations;
-    List<Appointment> appointments;
+    private List<Disease> diseases;
+    private List<Vaccine> vaccinations;
+    private List<Appointment> appointments;
 }
