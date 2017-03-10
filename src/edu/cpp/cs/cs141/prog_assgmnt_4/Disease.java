@@ -25,4 +25,8 @@ public class Disease {
         this.status = status;
     }
     
+    public String getStatus(String status)
+    {
+        return status;
+    }
 }
