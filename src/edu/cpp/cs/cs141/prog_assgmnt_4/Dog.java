@@ -9,7 +9,7 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public abstract class Dog extends Animal {
+public class Dog extends Animal {
     
     public Dog(Owner owner, String name, int age)
     {
