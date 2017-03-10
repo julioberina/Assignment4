@@ -21,6 +21,11 @@ public class Database {
     
     private List<Appointment> appointments;
     
+    public Database()
+    {
+        appointments = new ArrayList<Appointment>();
+    }
+    
     public void saveState()
     {
         try
@@ -53,5 +58,15 @@ public class Database {
         {
             e.printStackTrace();
         }
+    }
+    
+    public List<Appointment> getAppointments()
+    {
+        return appointments;
+    }
+    
+    public void resolveAppointment(int index)
+    {
+        appointments.remove(index);
     }
 }

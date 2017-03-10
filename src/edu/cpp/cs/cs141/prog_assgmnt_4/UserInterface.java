@@ -77,8 +77,41 @@ public class UserInterface {
     
     public void appointmentTask()
     {
+        boolean doneResolving = false;
+        Appointment[] appts = (Appointment[])db.getAppointments().toArray();
         System.out.println("Listing all appointments\n");
+        System.out.println("   \tDate\tTime\tClient\tStatus");
         
+        for (int i = 0; i < appts.length; ++i)
+            appts[i].displayData((i+1));
+        
+        System.out.print("\n");
+        while (doneResolving == false)
+            doneResolving = resolveAppts();
+    }
+    
+    public boolean resolveAppts()
+    {
+        int choice = 0;
+        int index = 0;
+        System.out.println("Would you like to resolve an appointment?  ");
+        System.out.print("(1 for yes, 2 for no):  ");
+        choice = scan.nextInt();
+        
+        if (choice == 2)
+            return true;
+        else if (choice == 1)
+        {
+            System.out.print("Enter appointment number to resolve:  ");
+            index = scan.nextInt();
+            db.resolveAppointment(index - 1);
+            return false;
+        }
+        else
+        {
+            System.out.println("Invalid input!");
+            return false;
+        }
     }
     
     public void searchAppointments()

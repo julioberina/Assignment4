@@ -26,13 +26,17 @@ public class Appointment {
         status = "outstanding";
     }
     
-    public void resolveStatus()
-    {
-        status = "resolved";
-    }
-    
-    public String retrieveStatus()
+    public String getStatus()
     {
         return status;
+    }
+    
+    public void displayData(int index)
+    {
+        System.out.print(index + ". ");
+        System.out.print("\t" + date.toString());
+        System.out.print("\t" + time.toString());
+        System.out.print("\t" + client.getName());
+        System.out.println("\t" + status);
     }
 }
