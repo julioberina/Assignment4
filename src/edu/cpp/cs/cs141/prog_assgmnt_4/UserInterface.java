@@ -10,12 +10,14 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  * @author jmb
  */
 import java.util.Scanner;
+import java.io.File;
 
 public class UserInterface {
     
     private int userChoice;
     private boolean running;
     private Scanner scan;
+    private Database db;
     
     public UserInterface()
     {
@@ -23,6 +25,11 @@ public class UserInterface {
         scan = new Scanner(System.in);
         userChoice = 0;
         running = true;
+        db = new Database();
+        
+        File dbFile = new File(System.getProperty("user.dir") + "/db/database.dat");
+        if (dbFile.exists())
+            db.loadState();
     }
     
     public void startSystem()
@@ -40,6 +47,7 @@ public class UserInterface {
             System.out.print("\n");
             executeTask(userChoice);
         }
+        db.saveState();
     }
     
     public void executeTask(int choice)

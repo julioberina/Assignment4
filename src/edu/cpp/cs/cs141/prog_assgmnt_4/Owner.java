@@ -10,5 +10,15 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  * @author jmb
  */
 public class Owner {
+    private String name;
     
+    public Owner(String name)
+    {
+        this.name = name;
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
 }
