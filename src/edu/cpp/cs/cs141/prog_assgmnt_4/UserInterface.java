@@ -10,6 +10,7 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  * @author jmb
  */
 import java.util.Scanner;
+import java.util.InputMismatchException;
 import java.io.File;
 
 public class UserInterface {
@@ -36,16 +37,24 @@ public class UserInterface {
     {
         while (running)
         {
-            System.out.println("Tasks:\n");
-            System.out.println("1. List and resolve appointments");
-            System.out.println("2. Search Appointments by Owner and/or Date");
-            System.out.println("3. Search medical records by Animal type, name, and owner");
-            System.out.println("4. Check/add appointments for particular Animal");
-            System.out.println("5. Quit Program\n");
-            System.out.print("Enter number of task to execute:  ");
-            userChoice = scan.nextInt();
-            System.out.print("\n");
-            executeTask(userChoice);
+            try
+            {
+                System.out.println("Tasks:\n");
+                System.out.println("1. List and resolve appointments");
+                System.out.println("2. Search Appointments by Owner and/or Date");
+                System.out.println("3. Search medical records by Animal type, name, and owner");
+                System.out.println("4. Check/add appointments for particular Animal");
+                System.out.println("5. Quit Program\n");
+                System.out.print("Enter number of task to execute:  ");
+                userChoice = scan.nextInt();
+                System.out.print("\n");
+                executeTask(userChoice);
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println("Numbers only please!\n");
+                scan.nextLine();
+            }
         }
         db.saveState();
     }
