@@ -223,12 +223,13 @@ public class UserInterface {
         }
     }
     
+    
     public void searchAnimalRecords()
     {
         String kind = "";
         String name = "";
         String owner = "";
-        int index = 1;
+        boolean doneShowing = false;
         
         System.out.print("Enter animal kind:  ");
         kind = scan.nextLine();
@@ -236,6 +237,16 @@ public class UserInterface {
         name = scan.nextLine();
         System.out.print("Enter owner name:  ");
         owner = scan.nextLine();
+        
+        while (doneShowing == false) {
+            writeAppts(kind, name, owner);
+            
+        }
+    }
+    
+    public void writeAppts(String kind, String name, String owner)
+    {
+        int index = 1;
         
         for (Appointment appt: db.getAppointments()) {
             if (appt.getAnimal().getKind().equals(kind)
@@ -246,4 +257,6 @@ public class UserInterface {
         
         System.out.print("\n");
     }
+    
+    public boolean 
 }

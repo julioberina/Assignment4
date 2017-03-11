@@ -17,7 +17,7 @@ public abstract class Animal implements Comparator {
     
     public enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
     
-    private String owner;
+    private Owner owner;
     private String name;
     private String compType;
     private int age;
@@ -25,7 +25,7 @@ public abstract class Animal implements Comparator {
     private List<Disease> diseases;
     private List<Vaccine> vaccinations;
     
-    public Animal(String owner, String name, int age, Breed breed)
+    public Animal(Owner owner, String name, int age, Breed breed)
     {
         this.owner = owner;
         this.name = name;
@@ -63,7 +63,7 @@ public abstract class Animal implements Comparator {
     
     public String getOwner()
     {
-        return owner;
+        return owner.getName();
     }
     
     public String getName()
@@ -79,7 +79,7 @@ public abstract class Animal implements Comparator {
     @Override
     public int compare(Object name, Object owner)
     {
-        if (((String)name).equals(this.name) && ((String)owner).equals(this.owner))
+        if (((String)name).equals(this.name) && ((String)owner).equals(this.owner.getName()))
             return 0;
         else
             return -1;

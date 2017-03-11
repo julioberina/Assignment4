@@ -21,6 +21,7 @@ public class Database {
     
     private List<Appointment> appointments;
     
+    
     public Database()
     {
         appointments = new ArrayList<Appointment>();
