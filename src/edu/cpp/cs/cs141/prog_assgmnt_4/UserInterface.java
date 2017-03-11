@@ -45,8 +45,7 @@ public class UserInterface {
                 System.out.println("1. List and resolve appointments");
                 System.out.println("2. Search Appointments by Owner and/or Date");
                 System.out.println("3. Search medical records by Animal type, name, and owner");
-                System.out.println("4. Check/add appointments for particular Animal");
-                System.out.println("5. Quit Program\n");
+                System.out.println("4. Quit Program\n");
                 System.out.print("Enter number of task to execute:  ");
                 userChoice = scan.nextInt();
                 System.out.print("\n");
@@ -75,9 +74,6 @@ public class UserInterface {
                 searchAnimalRecords();
                 break;
             case 4:
-                animalApptCheckAndAdd();
-                break;
-            case 5:
                 running = false;
                 break;
             default:
@@ -138,11 +134,6 @@ public class UserInterface {
     }
     
     public void searchAnimalRecords()
-    {
-        
-    }
-    
-    public void animalApptCheckAndAdd()
     {
         
     }
