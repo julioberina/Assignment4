@@ -11,6 +11,8 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  */
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.File;
 
 public class UserInterface {
@@ -86,17 +88,26 @@ public class UserInterface {
     
     public void appointmentTask()
     {
+        int index = 0;
         boolean doneResolving = false;
-        Appointment[] appts = (Appointment[])db.getAppointments().toArray();
+        List<Appointment> appts = db.getAppointments();
         System.out.println("Listing all appointments\n");
         System.out.println("   \tDate\tTime\tClient\tStatus");
         
-        for (int i = 0; i < appts.length; ++i)
-            appts[i].displayData((i+1));
+        for (int i = 0; i < appts.size(); ++i)
+            appts.get(i).displayData(i+1);
         
         System.out.print("\n");
         while (doneResolving == false)
             doneResolving = resolveAppts();
+    }
+    
+    public int displayAppts(int index, List<Appointment> appts)
+    {
+        for (Appointment appt: appts)
+            appt.displayData(++index);
+        
+        return index;
     }
     
     public boolean resolveAppts()
@@ -113,7 +124,7 @@ public class UserInterface {
         {
             System.out.print("Enter appointment number to resolve:  ");
             index = scan.nextInt();
-            db.resolveAppointment(index - 1);
+            
             return false;
         }
         else

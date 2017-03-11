@@ -19,10 +19,12 @@ import java.io.IOException;
 
 public class Database {
     
+    private List<Animal> animals;
     private List<Appointment> appointments;
     
     public Database()
     {
+        animals = new ArrayList<Animal>();
         appointments = new ArrayList<Appointment>();
     }
     
@@ -32,6 +34,7 @@ public class Database {
         {
             ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(System.getProperty("user.dir") + "/db/database.dat"));
+            oos.writeObject(animals);
             oos.writeObject(appointments);
             oos.close();
         }
@@ -47,7 +50,7 @@ public class Database {
         {
             ObjectInputStream ois = new ObjectInputStream(
                 new FileInputStream(System.getProperty("user.dir") + "/db/database.dat"));
-            appointments = (List<Appointment>)ois.readObject();
+            animals = (List<Animal>)ois.readObject();
             ois.close();
         }
         catch (IOException e)
@@ -60,13 +63,13 @@ public class Database {
         }
     }
     
+    public List<Animal> getAnimals()
+    {
+        return animals;
+    }
+    
     public List<Appointment> getAppointments()
     {
         return appointments;
-    }
-    
-    public void resolveAppointment(int index)
-    {
-        appointments.remove(index);
     }
 }

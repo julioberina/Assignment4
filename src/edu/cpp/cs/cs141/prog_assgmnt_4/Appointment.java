@@ -17,10 +17,10 @@ public class Appointment {
     
     private LocalDate date;
     private LocalTime time;
-    private Owner client;
+    private String client;
     private String status;
     
-    public Appointment(Owner client)
+    public Appointment(String client)
     {
         this.client = client;
         status = "outstanding";
@@ -36,7 +36,7 @@ public class Appointment {
         System.out.print(index + ". ");
         System.out.print("\t" + date.toString());
         System.out.print("\t" + time.toString());
-        System.out.print("\t" + client.getName());
+        System.out.print("\t" + client);
         System.out.println("\t" + status);
     }
 }

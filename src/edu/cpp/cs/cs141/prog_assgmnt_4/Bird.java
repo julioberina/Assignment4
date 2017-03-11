@@ -11,7 +11,7 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  */
 public class Bird extends Animal {
     
-    public Bird(Owner owner, String name, int age)
+    public Bird(String owner, String name, int age)
     {
         super(owner, name, age);
     }

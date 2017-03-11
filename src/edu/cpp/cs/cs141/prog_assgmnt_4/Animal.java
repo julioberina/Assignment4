@@ -15,20 +15,21 @@ import java.util.Comparator;
 
 public abstract class Animal {
     
-    private Owner owner;
+    private enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
+    
+    private String owner;
     private String name;
     private int age;
+    private Breed breed;
     private List<Disease> diseases;
     private List<Vaccine> vaccinations;
-    private List<Appointment> appointments;
     
-    public Animal(Owner owner, String name, int age)
+    public Animal(String owner, String name, int age)
     {
         this.owner = owner;
         this.name = name;
         this.age = age;
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
-        appointments = new ArrayList<Appointment>();
     }
 }
