@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * CS 141: Intro to Programming and Problem Solving
+ * Professor: Edwin Rodríguez
+ *
+ * Programming Assignment #4
+ *
+ * Hospital Database
+ *
+ * Julio Berina
  */
 package edu.cpp.cs.cs141.prog_assgmnt_4;
 
