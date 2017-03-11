@@ -60,6 +60,16 @@ public abstract class Animal implements Comparator {
     {
         return breed;
     }
+    
+    public String getOwner()
+    {
+        return owner;
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
 
     @Override
     public int compare(Object name, Object owner)

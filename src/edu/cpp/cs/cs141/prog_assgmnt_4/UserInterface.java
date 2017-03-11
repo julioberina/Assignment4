@@ -88,7 +88,6 @@ public class UserInterface {
     
     public void appointmentTask()
     {
-        int index = 0;
         boolean doneResolving = false;
         List<Appointment> appts = db.getAppointments();
         System.out.println("Listing all appointments\n");
@@ -107,14 +106,6 @@ public class UserInterface {
                 System.out.print("\n");
             }
         }
-    }
-    
-    public int displayAppts(int index, List<Appointment> appts)
-    {
-        for (Appointment appt: appts)
-            appt.displayData(++index);
-        
-        return index;
     }
     
     public boolean resolveAppts()

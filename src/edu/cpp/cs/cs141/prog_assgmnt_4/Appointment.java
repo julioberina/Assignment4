@@ -17,12 +17,12 @@ public class Appointment implements Comparator, Comparable {
     
     private LocalDate date;
     private LocalTime time;
-    private String client;
+    private Animal animal;
     private String status;
     
-    public Appointment(String client)
+    public Appointment(Animal animal)
     {
-        this.client = client;
+        this.animal = animal;
         status = "outstanding";
     }
     
@@ -36,14 +36,15 @@ public class Appointment implements Comparator, Comparable {
         System.out.print(index + ". ");
         System.out.print("\t" + date.toString());
         System.out.print("\t" + time.toString());
-        System.out.print("\t" + client);
+        System.out.print("\t" + animal.getOwner());
+        System.out.print("\t" + animal.getName());
         System.out.println("\t" + status);
     }
     
     @Override
     public int compare(Object owner, Object date)
     {
-        if (client == owner && this.date == date)
+        if (animal.getOwner() == owner && this.date == date)
             return 0;
         else
             return -1;
@@ -53,7 +54,7 @@ public class Appointment implements Comparator, Comparable {
     public int compareTo(Object comp)
     {
         if (comp.getClass().getSimpleName().equals("String")) // Owner
-            return client.compareTo((String)comp);
+            return animal.getOwner().compareTo((String)comp);
         else if (comp.getClass().getSimpleName().equals("LocalDate"))
         {
             LocalDate compDate = (LocalDate)comp;
