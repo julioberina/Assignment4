@@ -32,4 +32,14 @@ public abstract class Animal {
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
     }
+    
+    public List<Disease> getDisease()
+    {
+        return diseases;
+    }
+    
+    public List<Vaccine> getVaccinations()
+    {
+        return vaccinations;
+    }
 }
