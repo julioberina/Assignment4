@@ -13,9 +13,12 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.io.File;
 
 public class UserInterface {
+    
+    public enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
     
     private int userChoice;
     private boolean running;
@@ -130,11 +133,117 @@ public class UserInterface {
     
     public void searchAppointments()
     {
+        int choice = 0;
         
+        System.out.println("Search by:\n");
+        System.out.println("1. Owner");
+        System.out.println("2. Date");
+        System.out.println("3. Owner and Date\n");
+        
+        while (choice < 1 || choice > 3) {
+            try {
+                System.out.print("Enter choice:  ");
+                choice = scan.nextInt();
+                if (choice < 1 || choice > 3)
+                    System.out.println("Error! Can only choose 1, 2, or 3");
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Numbers only please");
+            }
+        }
+        
+        listByApptSearch(choice);
+    }
+    
+    public void listByApptSearch(int choice)
+    {   
+        switch (choice)
+        {
+            case 1:
+                dispOwnerAppt();
+                break;
+            case 2:
+                dispDateAppt();
+                break;
+            case 3:
+                dispOwnerDateAppt();
+                break;
+        }
+    }
+    
+    public void dispOwnerAppt()
+    {
+        int index = 1;
+        String owner;
+        
+        System.out.print("Enter owner name:  ");
+        owner = scan.nextLine();
+        for (Appointment appt: db.getAppointments()) {
+            if (appt.compareTo(owner) == 0)
+                appt.displayData(index++);
+        }   
+    }
+    
+    public void dispDateAppt()
+    {
+        int index = 1;
+        LocalDate date = LocalDate.now();
+        int month = 0;
+        int day = 0;
+        System.out.print("Enter month:  ");
+        month = scan.nextInt();
+        System.out.print("Enter day:  ");
+        day = scan.nextInt();
+        date = date.withMonth(month).withDayOfMonth(day);
+        
+        for (Appointment appt: db.getAppointments()) {
+            if (appt.compareTo(date) == 0)
+                appt.displayData(index++);
+        }
+    }
+    
+    public void dispOwnerDateAppt()
+    {
+        int index = 1;
+        String owner;
+        LocalDate date = LocalDate.now();
+        int month = 0;
+        int day = 0;
+        
+        System.out.print("Enter owner name:  ");
+        owner = scan.nextLine();
+        System.out.print("Enter month:  ");
+        month = scan.nextInt();
+        System.out.print("Enter day:  ");
+        day = scan.nextInt();
+        
+        for (Appointment appt: db.getAppointments()) {
+            if (appt.compare(owner, date) == 0)
+                appt.displayData(index++);
+        }
     }
     
     public void searchAnimalRecords()
     {
+        String kind = "";
+        String name = "";
+        String owner = "";
+        int index = 1;
         
+        System.out.print("Enter animal kind:  ");
+        kind = scan.nextLine();
+        System.out.print("Enter animal name:  ");
+        name = scan.nextLine();
+        System.out.print("Enter owner name:  ");
+        owner = scan.nextLine();
+        
+        for (Appointment appt: db.getAppointments()) {
+            if (appt.getAnimal().getKind().equals(kind)
+                    && appt.compareTo(owner) == 0
+                    && appt.getAnimal().getName().equals(name))
+                appt.displayData(index++);
+        }
+        
+        System.out.print("\n");
     }
 }

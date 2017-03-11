@@ -70,6 +70,11 @@ public abstract class Animal implements Comparator {
     {
         return name;
     }
+    
+    public String getKind()
+    {
+        return this.getClass().getSimpleName();
+    }
 
     @Override
     public int compare(Object name, Object owner)

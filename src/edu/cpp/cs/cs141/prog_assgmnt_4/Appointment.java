@@ -31,6 +31,11 @@ public class Appointment implements Comparator, Comparable {
         return status;
     }
     
+    public Animal getAnimal()
+    {
+        return animal;
+    }
+    
     public void displayData(int index)
     {
         System.out.print(index + ". ");
@@ -44,7 +49,7 @@ public class Appointment implements Comparator, Comparable {
     @Override
     public int compare(Object owner, Object date)
     {
-        if (animal.getOwner() == owner && this.date == date)
+        if (animal.getOwner().equals(owner) && this.date.equals(date))
             return 0;
         else
             return -1;
