@@ -9,7 +9,9 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Dog extends Animal {
+import java.io.Serializable;
+
+public class Dog extends Animal implements Serializable {
     
     public Dog(Owner owner, String name, int age)
     {

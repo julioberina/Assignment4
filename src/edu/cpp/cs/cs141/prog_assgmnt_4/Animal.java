@@ -13,8 +13,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.io.Serializable;
 
-public abstract class Animal implements Comparator {
+public abstract class Animal implements Comparator, Serializable {
     
     public enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
     
@@ -32,6 +33,7 @@ public abstract class Animal implements Comparator {
         this.name = name;
         this.age = age;
         this.breed = assignBreed();
+        appointments = new ArrayList<Appointment>();
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
     }

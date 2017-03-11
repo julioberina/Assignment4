@@ -9,7 +9,9 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Disease {
+import java.io.Serializable;
+
+public class Disease implements Serializable {
     
     private String name;
     private String status;

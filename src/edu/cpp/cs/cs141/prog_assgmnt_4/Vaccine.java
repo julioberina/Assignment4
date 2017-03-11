@@ -9,7 +9,9 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Vaccine {
+import java.io.Serializable;
+
+public class Vaccine implements Serializable {
     
     private String tradeName;
     

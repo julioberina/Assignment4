@@ -9,7 +9,9 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  *
  * @author jmb
  */
-public class Owner {
+import java.io.Serializable;
+
+public class Owner implements Serializable {
     
     private String name;
     private String address;

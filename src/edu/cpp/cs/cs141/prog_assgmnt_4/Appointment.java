@@ -12,8 +12,9 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Comparator;
+import java.io.Serializable;
 
-public class Appointment implements Comparator, Comparable {
+public class Appointment implements Comparator, Comparable, Serializable {
     
     private LocalDate date;
     private LocalTime time;
