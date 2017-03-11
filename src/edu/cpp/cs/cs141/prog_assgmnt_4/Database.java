@@ -31,7 +31,41 @@ public class Database {
     
     public void addData()
     {
-        
+        animals.add(new Dog(newOwner("Adam"), "Able", 5));
+        animals.add(new Dog(newOwner("Bob"), "Blake", 5));
+        animals.add(new Dog(newOwner("Charlie"), "Charles", 5));
+        animals.add(new Dog(newOwner("Dick"), "Daisy", 5));
+        animals.add(new Dog(newOwner("Edward"), "Eduardo", 5));
+        animals.add(new Dog(newOwner("Fagan"), "Fred", 5));
+        animals.add(new Dog(newOwner("Gary"), "George", 5));
+        animals.add(new Dog(newOwner("Harry"), "Harold", 5));
+        animals.add(new Dog(newOwner("Ian"), "Isaac", 5));
+        animals.add(new Dog(newOwner("Julio"), "James", 5));
+        animals.add(new Bird(newOwner("Adam"), "Able", 5));
+        animals.add(new Bird(newOwner("Bob"), "Blake", 5));
+        animals.add(new Bird(newOwner("Charlie"), "Charles", 5));
+        animals.add(new Bird(newOwner("Dick"), "Daisy", 5));
+        animals.add(new Bird(newOwner("Edward"), "Eduardo", 5));
+        animals.add(new Bird(newOwner("Fagan"), "Fred", 5));
+        animals.add(new Bird(newOwner("Gary"), "George", 5));
+        animals.add(new Bird(newOwner("Harry"), "Harold", 5));
+        animals.add(new Bird(newOwner("Ian"), "Isaac", 5));
+        animals.add(new Bird(newOwner("Julio"), "James", 5));
+        animals.add(new Fish(newOwner("Adam"), "Able", 5));
+        animals.add(new Fish(newOwner("Bob"), "Blake", 5));
+        animals.add(new Fish(newOwner("Charlie"), "Charles", 5));
+        animals.add(new Fish(newOwner("Dick"), "Daisy", 5));
+        animals.add(new Fish(newOwner("Edward"), "Eduardo", 5));
+        animals.add(new Fish(newOwner("Fagan"), "Fred", 5));
+        animals.add(new Fish(newOwner("Gary"), "George", 5));
+        animals.add(new Fish(newOwner("Harry"), "Harold", 5));
+        animals.add(new Fish(newOwner("Ian"), "Isaac", 5));
+        animals.add(new Fish(newOwner("Julio"), "James", 5));
+    }
+    
+    public Owner newOwner(String name)
+    {
+        return (new Owner(name, "1234 Ocean Avenue, 56789", "18001234567"));
     }
     
     public void saveState()
@@ -40,6 +74,7 @@ public class Database {
         {
             ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(System.getProperty("user.dir") + "/db/database.dat"));
+            oos.writeObject(animals);
             oos.writeObject(appointments);
             oos.close();
         }
@@ -55,6 +90,7 @@ public class Database {
         {
             ObjectInputStream ois = new ObjectInputStream(
                 new FileInputStream(System.getProperty("user.dir") + "/db/database.dat"));
+            animals = (List<Animal>)ois.readObject();
             appointments = (List<Appointment>)ois.readObject();
             ois.close();
         }

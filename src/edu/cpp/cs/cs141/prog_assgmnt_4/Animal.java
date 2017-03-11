@@ -12,6 +12,7 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 
 public abstract class Animal implements Comparator {
     
@@ -25,14 +26,40 @@ public abstract class Animal implements Comparator {
     private List<Disease> diseases;
     private List<Vaccine> vaccinations;
     
-    public Animal(Owner owner, String name, int age, Breed breed)
+    public Animal(Owner owner, String name, int age)
     {
         this.owner = owner;
         this.name = name;
         this.age = age;
-        this.breed = breed;
+        this.breed = assignBreed();
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
+    }
+    
+    public Breed assignBreed()
+    {
+        Breed breed = Breed.RED;
+        Random rand = new Random();
+        switch (rand.nextInt(5))
+        {
+            case 0:
+                breed = Breed.RED;
+                break;
+            case 1:
+                breed = Breed.BLUE;
+                break;
+            case 2:
+                breed = Breed.YELLOW;
+                break;
+            case 3:
+                breed = Breed.BLACK;
+                break;
+            case 4:
+                breed = Breed.WHITE;
+                break;
+        }
+        
+        return breed;
     }
     
     public List<Disease> getDisease()

@@ -19,8 +19,6 @@ import java.time.LocalTime;
 
 public class UserInterface {
     
-    public enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
-    
     private int userChoice;
     private boolean running;
     private Scanner scan;
@@ -78,6 +76,7 @@ public class UserInterface {
                 searchAnimalRecords();
                 break;
             case 4:
+                db.saveState();
                 running = false;
                 break;
             default:
