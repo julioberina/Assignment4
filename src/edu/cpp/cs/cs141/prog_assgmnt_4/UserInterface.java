@@ -100,9 +100,12 @@ public class UserInterface {
         System.out.print("\n");
         while (doneResolving == false) {
             doneResolving = resolveAppts();
-            System.out.print("\n");
-            for (int i = 0; i < appts.size(); ++i)
-                appts.get(i).displayData(i+1);
+            if (doneResolving == false) {
+                System.out.print("\n");
+                for (int i = 0; i < appts.size(); ++i)
+                    appts.get(i).displayData(i+1);
+                System.out.print("\n");
+            }
         }
     }
     

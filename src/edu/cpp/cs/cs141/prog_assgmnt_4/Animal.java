@@ -19,6 +19,7 @@ public abstract class Animal {
     
     private String owner;
     private String name;
+    private String compType;
     private int age;
     private Breed breed;
     private List<Disease> diseases;
@@ -32,6 +33,7 @@ public abstract class Animal {
         this.breed = breed;
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
+        compType = "";
     }
     
     public List<Disease> getDisease()
