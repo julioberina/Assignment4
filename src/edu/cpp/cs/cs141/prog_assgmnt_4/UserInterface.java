@@ -93,7 +93,7 @@ public class UserInterface {
         System.out.println("   \tDate\tTime\tClient\tStatus");
         
         for (int i = 0; i < appts.size(); ++i)
-            appts.get(i).displayData(i+1);
+            System.out.println(appts.get(i).displayData(i+1));
         
         System.out.print("\n");
         while (doneResolving == false) {
@@ -160,12 +160,14 @@ public class UserInterface {
         switch (choice)
         {
             case 1:
+                scan.nextLine();
                 dispOwnerAppt();
                 break;
             case 2:
                 dispDateAppt();
                 break;
             case 3:
+                scan.nextLine();
                 dispOwnerDateAppt();
                 break;
         }
@@ -226,6 +228,7 @@ public class UserInterface {
     
     public void searchAnimalRecords()
     {
+        scan.nextLine();
         String kind = "";
         String name = "";
         String owner = "";
@@ -322,6 +325,7 @@ public class UserInterface {
     
     public Owner enterClient()
     {
+        scan.nextLine();
         String client = "";
         System.out.print("Enter name of owner:  ");
         client = scan.nextLine();

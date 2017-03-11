@@ -109,6 +109,24 @@ public abstract class Animal implements Comparator, Serializable {
         return appointments;
     }
     
+    public boolean hasAppointment(Appointment apt)
+    {
+        for (Appointment appt: appointments) {
+            if (appt.equals(apt))
+                return true;
+        }
+        
+        return false;
+    }
+    
+    public void removeAppointment(Appointment apt)
+    {
+        for (int i = 0; i < appointments.size(); ++i) {
+            if (appointments.get(i).equals(apt))
+                appointments.remove(i);
+        }
+    }
+    
     public void addAppointment(Appointment appt)
     {
         appointments.add(appt);

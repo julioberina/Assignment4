@@ -21,13 +21,11 @@ import java.time.LocalTime;
 
 public class Database {
     
-    private List<Appointment> appointments;
     private List<Animal> animals;
     
     public Database()
     {
-        animals = new ArrayList<Animal>();
-        appointments = new ArrayList<Appointment>();
+        
     }
     
     public Owner newOwner(String name)
@@ -42,7 +40,6 @@ public class Database {
             ObjectOutputStream oos = new ObjectOutputStream(
                 new FileOutputStream(System.getProperty("user.dir") + "/db/database.dat"));
             oos.writeObject(animals);
-            oos.writeObject(appointments);
             oos.close();
         }
         catch (IOException e)
@@ -58,7 +55,6 @@ public class Database {
             ObjectInputStream ois = new ObjectInputStream(
                 new FileInputStream(System.getProperty("user.dir") + "/db/database.dat"));
             animals = (List<Animal>)ois.readObject();
-            appointments = (List<Appointment>)ois.readObject();
             ois.close();
         }
         catch (IOException e)
@@ -73,6 +69,11 @@ public class Database {
     
     public List<Appointment> getAppointments()
     {
+        List<Appointment> appointments = new ArrayList<Appointment>();
+        for (int i = 0; i < animals.size(); ++i) {
+            for (int j = 0; j < animals.get(i).getAppointments().size(); ++j)
+                appointments.add(animals.get(i).getAppointments().get(j));
+        }
         return appointments;
     }
     
@@ -83,6 +84,14 @@ public class Database {
     
     public void resolveAppointment(int index)
     {
-        appointments.remove(index);
+        List<Appointment> appointments = new ArrayList<Appointment>();
+        for (Animal animal: animals) {
+            for (Appointment appt: animal.getAppointments())
+                appointments.add(appt);
+        }
+        for (Animal animal: animals) {
+            if (animal.hasAppointment(appointments.get(index)))
+                animal.removeAppointment(appointments.get(index));
+        }
     }
 }
