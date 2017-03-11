@@ -51,6 +51,7 @@ public class Database {
             ObjectInputStream ois = new ObjectInputStream(
                 new FileInputStream(System.getProperty("user.dir") + "/db/database.dat"));
             animals = (List<Animal>)ois.readObject();
+            appointments = (List<Appointment>)ois.readObject();
             ois.close();
         }
         catch (IOException e)
@@ -71,5 +72,10 @@ public class Database {
     public List<Appointment> getAppointments()
     {
         return appointments;
+    }
+    
+    public void resolveAppointment(int index)
+    {
+        appointments.remove(index);
     }
 }

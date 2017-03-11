@@ -98,8 +98,12 @@ public class UserInterface {
             appts.get(i).displayData(i+1);
         
         System.out.print("\n");
-        while (doneResolving == false)
+        while (doneResolving == false) {
             doneResolving = resolveAppts();
+            System.out.print("\n");
+            for (int i = 0; i < appts.size(); ++i)
+                appts.get(i).displayData(i+1);
+        }
     }
     
     public int displayAppts(int index, List<Appointment> appts)
@@ -124,7 +128,7 @@ public class UserInterface {
         {
             System.out.print("Enter appointment number to resolve:  ");
             index = scan.nextInt();
-            
+            db.resolveAppointment(index-1);
             return false;
         }
         else
