@@ -19,9 +19,9 @@ public abstract class Animal implements Comparator {
     
     private Owner owner;
     private String name;
-    private String compType;
     private int age;
     private Breed breed;
+    private List<Appointment> appointments;
     private List<Disease> diseases;
     private List<Vaccine> vaccinations;
     
@@ -33,7 +33,6 @@ public abstract class Animal implements Comparator {
         this.breed = breed;
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
-        compType = "";
     }
     
     public List<Disease> getDisease()
@@ -75,7 +74,71 @@ public abstract class Animal implements Comparator {
     {
         return this.getClass().getSimpleName();
     }
-
+    
+    public List<Appointment> getAppointments()
+    {
+        return appointments;
+    }
+    
+    public void addAppointment(Appointment appt)
+    {
+        appointments.add(appt);
+    }
+    
+    public String displayData(int index)
+    {
+        String data = Integer.toString(index) + ". \n";
+        data += ("Type: " + getKind() + "\n");
+        data += ("Owner: " + owner + "\n");
+        data += ("Name: " + name + "\n");
+        data += ("Breed: " + breedString(breed) + "\n");
+        data += ("Diseases: " + strDiseases() + "\n");
+        data += ("Vaccinations: " + strVaccinations() + "\n");
+        return data;
+    }
+    
+    public String strDiseases()
+    {
+        String str = "";
+        for (Disease disease: diseases)
+            str += (disease.getName() + ": " + disease.getStatus() + ", ");
+        return str;
+    }
+    
+    public String strVaccinations()
+    {
+        String str = "";
+        for (Vaccine vaccine: vaccinations)
+            str += (vaccine.getTradeName() + ", ");
+        return str;
+    }
+    
+    public String breedString(Breed breed)
+    {
+        String breedStr = "";
+        
+        switch (breed)
+        {
+            case RED:
+                breedStr = "Red";
+                break;
+            case BLUE:
+                breedStr = "Blue";
+                break;
+            case YELLOW:
+                breedStr = "Yellow";
+                break;
+            case BLACK:
+                breedStr = "Black";
+                break;
+            case WHITE:
+                breedStr = "White";
+                break;
+        }
+        
+        return breedStr;
+    }
+    
     @Override
     public int compare(Object name, Object owner)
     {

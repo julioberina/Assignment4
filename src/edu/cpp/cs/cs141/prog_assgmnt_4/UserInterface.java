@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.io.File;
+import java.time.LocalTime;
 
 public class UserInterface {
     
@@ -229,6 +230,7 @@ public class UserInterface {
         String kind = "";
         String name = "";
         String owner = "";
+        List<Animal> animals = new ArrayList<Animal>();
         boolean doneShowing = false;
         
         System.out.print("Enter animal kind:  ");
@@ -239,24 +241,91 @@ public class UserInterface {
         owner = scan.nextLine();
         
         while (doneShowing == false) {
-            writeAppts(kind, name, owner);
-            
+            animals = writeAppts(kind, name, owner);
+            doneShowing = checkOrAddAppt(animals);
         }
     }
     
-    public void writeAppts(String kind, String name, String owner)
+    public List<Animal> writeAppts(String kind, String name, String owner)
     {
         int index = 1;
+        List<Animal> animals = new ArrayList<Animal>();
         
-        for (Appointment appt: db.getAppointments()) {
-            if (appt.getAnimal().getKind().equals(kind)
-                    && appt.compareTo(owner) == 0
-                    && appt.getAnimal().getName().equals(name))
-                appt.displayData(index++);
+        for (Animal animal: db.getAnimals()) {
+            if (animal.getKind().equals(kind)
+                    && animal.getOwner().equals(owner)
+                    && animal.getName().equals(name)) {
+                animals.add(animal);
+                System.out.println(animal.displayData(index++) + "\n");
+            }
         }
         
         System.out.print("\n");
+        return animals;
     }
     
-    public boolean 
+    public boolean checkOrAddAppt(List<Animal> animals)
+    {
+        int pick = 0;
+        int index = 0;
+        System.out.print("Would you like to check or add appointments (0 no, 1 check, 2 add): ");
+        pick = scan.nextInt();
+        if (pick == 0)
+            return true;
+        else if (pick == 1) {
+            int ind = 1;
+            System.out.print("Check appointment of which animal (number):  ");
+            index = scan.nextInt();
+            for (Appointment appt: animals.get(index-1).getAppointments())
+                appt.displayData(ind++);
+            return false;
+        }
+        else if (pick == 2) {
+            System.out.print("Add appointment to which animal (number):  ");
+            index = scan.nextInt();
+            
+            animals.get(index-1).addAppointment(
+                    new Appointment(enterDate(), enterTime(), enterClient())
+            );
+            return false;
+        }
+        else {
+            System.out.println("Invalid input!");
+            return false;
+        }
+    }
+    
+    public LocalDate enterDate()
+    {
+        LocalDate date = LocalDate.now();
+        int month = 0;
+        int day = 0;
+        System.out.print("Enter month:  ");
+        month = scan.nextInt();
+        System.out.print("Enter day:  ");
+        day = scan.nextInt();
+        date = date.withMonth(month).withDayOfMonth(day);
+        return date;
+    }
+    
+    public LocalTime enterTime()
+    {
+        LocalTime time = LocalTime.now();
+        int hour = 0;
+        int minute = 0;
+        System.out.print("Enter hour:  ");
+        hour = scan.nextInt();
+        System.out.print("Enter minute:  ");
+        minute = scan.nextInt();
+        time = time.withHour(hour).withMinute(minute);
+        return time;
+    }
+    
+    public Owner enterClient()
+    {
+        String client = "";
+        System.out.print("Enter name of owner:  ");
+        client = scan.nextLine();
+        return (new Owner(client, "1234 Ocean Avenue, 56789", "18001234567"));
+    }
 }

@@ -20,11 +20,18 @@ import java.io.IOException;
 public class Database {
     
     private List<Appointment> appointments;
-    
+    private List<Animal> animals;
     
     public Database()
     {
+        animals = new ArrayList<Animal>();
         appointments = new ArrayList<Appointment>();
+        addData();
+    }
+    
+    public void addData()
+    {
+        
     }
     
     public void saveState()
@@ -64,6 +71,11 @@ public class Database {
     public List<Appointment> getAppointments()
     {
         return appointments;
+    }
+    
+    public List<Animal> getAnimals()
+    {
+        return animals;
     }
     
     public void resolveAppointment(int index)

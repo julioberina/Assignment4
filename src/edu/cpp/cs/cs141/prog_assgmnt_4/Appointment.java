@@ -17,12 +17,14 @@ public class Appointment implements Comparator, Comparable {
     
     private LocalDate date;
     private LocalTime time;
-    private Animal animal;
+    private Owner client;
     private String status;
     
-    public Appointment(Animal animal)
+    public Appointment(LocalDate date, LocalTime time, Owner client)
     {
-        this.animal = animal;
+        this.date = date;
+        this.time = time;
+        this.client = client;
         status = "outstanding";
     }
     
@@ -31,25 +33,26 @@ public class Appointment implements Comparator, Comparable {
         return status;
     }
     
-    public Animal getAnimal()
+    public Owner getOwner()
     {
-        return animal;
+        return client;
     }
     
-    public void displayData(int index)
+    public String displayData(int index)
     {
-        System.out.print(index + ". ");
-        System.out.print("\t" + date.toString());
-        System.out.print("\t" + time.toString());
-        System.out.print("\t" + animal.getOwner());
-        System.out.print("\t" + animal.getName());
-        System.out.println("\t" + status);
+        String data = "";
+        data += Integer.toString(index) + ". ";
+        data += "\t" + date.toString();
+        data += "\t" + time.toString();
+        data += "\t" + client.getName();
+        data += "\t" + status;
+        return data;
     }
     
     @Override
     public int compare(Object owner, Object date)
     {
-        if (animal.getOwner().equals(owner) && this.date.equals(date))
+        if (((Owner)owner).getName().equals(client.getName()) && this.date.equals(date))
             return 0;
         else
             return -1;
@@ -59,7 +62,7 @@ public class Appointment implements Comparator, Comparable {
     public int compareTo(Object comp)
     {
         if (comp.getClass().getSimpleName().equals("String")) // Owner
-            return animal.getOwner().compareTo((String)comp);
+            return ((Owner)comp).getName().compareTo((String)comp);
         else if (comp.getClass().getSimpleName().equals("LocalDate"))
         {
             LocalDate compDate = (LocalDate)comp;

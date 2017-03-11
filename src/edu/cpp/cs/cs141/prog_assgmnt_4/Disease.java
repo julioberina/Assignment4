@@ -30,7 +30,7 @@ public class Disease {
         this.status = status;
     }
     
-    public String getStatus(String status)
+    public String getStatus()
     {
         return status;
     }
