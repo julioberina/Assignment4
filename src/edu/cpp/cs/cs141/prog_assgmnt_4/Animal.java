@@ -15,7 +15,7 @@ import java.util.Comparator;
 
 public abstract class Animal {
     
-    private enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
+    public enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
     
     private String owner;
     private String name;
@@ -24,11 +24,12 @@ public abstract class Animal {
     private List<Disease> diseases;
     private List<Vaccine> vaccinations;
     
-    public Animal(String owner, String name, int age)
+    public Animal(String owner, String name, int age, Breed breed)
     {
         this.owner = owner;
         this.name = name;
         this.age = age;
+        this.breed = breed;
         diseases = new ArrayList<Disease>();
         vaccinations = new ArrayList<Vaccine>();
     }
@@ -41,5 +42,10 @@ public abstract class Animal {
     public List<Vaccine> getVaccinations()
     {
         return vaccinations;
+    }
+    
+    public Breed getBreed()
+    {
+        return breed;
     }
 }

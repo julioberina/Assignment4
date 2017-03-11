@@ -11,8 +11,8 @@ package edu.cpp.cs.cs141.prog_assgmnt_4;
  */
 public class Dog extends Animal {
     
-    public Dog(String owner, String name, int age)
+    public Dog(String owner, String name, int age, Breed breed)
     {
-        super(owner, name, age);
+        super(owner, name, age, breed);
     }
 }
