@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public abstract class Animal {
+public abstract class Animal implements Comparator {
     
     public enum Breed {RED, BLUE, YELLOW, BLACK, WHITE};
     
@@ -41,13 +41,32 @@ public abstract class Animal {
         return diseases;
     }
     
+    public boolean hasDiseases()
+    {
+        return (diseases.size() > 0);
+    }
+    
     public List<Vaccine> getVaccinations()
     {
         return vaccinations;
     }
     
+    public boolean hasVaccinations()
+    {
+        return (vaccinations.size() > 0);
+    }
+    
     public Breed getBreed()
     {
         return breed;
+    }
+
+    @Override
+    public int compare(Object name, Object owner)
+    {
+        if (((String)name).equals(this.name) && ((String)owner).equals(this.owner))
+            return 0;
+        else
+            return -1;
     }
 }

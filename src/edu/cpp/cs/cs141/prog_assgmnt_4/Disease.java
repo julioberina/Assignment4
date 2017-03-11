@@ -20,6 +20,11 @@ public class Disease {
         this.status = status;
     }
     
+    public String getName()
+    {
+        return name;
+    }
+    
     public void setStatus(String status)
     {
         this.status = status;
